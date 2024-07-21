@@ -5,32 +5,36 @@ class HomePageState {
   final SliderResponse? sliderResponse;
   final String? errorMessage;
   final SpecialCategories? specialCategories;
-  final List<ProductData>? productData;
-  final int notificationCount;
+  final List<ProductData>? newProductData;
+  final List<ProductData>? xitProductData;
+  final List<ProductData>? climateProductData;
 
   HomePageState({
     required this.status,
-    required this.notificationCount,
     this.sliderResponse,
     this.errorMessage,
     this.specialCategories,
-    this.productData,
+    this.newProductData,
+    this.xitProductData,
+    this.climateProductData,
   });
 
-  HomePageState copyWith({
-    Status? status,
-    SliderResponse? sliderResponse,
-    String? errorMessage,
-    SpecialCategories? specialCategories,
-    List<ProductData>? productData,
-    int? notificationCount
-
-  }) =>
+  HomePageState copyWith(
+          {Status? status,
+          SliderResponse? sliderResponse,
+          String? errorMessage,
+          SpecialCategories? specialCategories,
+          List<ProductData>? newProductData,
+          List<ProductData>? xitProductData,
+          List<ProductData>? climateProductData,
+        }) =>
       HomePageState(
-          notificationCount: this.notificationCount,
-          status: this.status,
-          sliderResponse: sliderResponse ?? this.sliderResponse,
-          errorMessage: errorMessage ?? this.errorMessage,
-          specialCategories: specialCategories ?? this.specialCategories,
-          productData: productData ?? this.productData);
+        status: this.status,
+        sliderResponse: sliderResponse ?? this.sliderResponse,
+        errorMessage: errorMessage ?? this.errorMessage,
+        specialCategories: specialCategories ?? this.specialCategories,
+        newProductData: newProductData ?? this.newProductData,
+        xitProductData: xitProductData ?? this.xitProductData,
+        climateProductData: climateProductData ?? this.climateProductData,
+      );
 }

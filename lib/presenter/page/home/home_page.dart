@@ -8,6 +8,7 @@ import 'package:flutter_retrofit_texnomart/presenter/blocs/main/main_bloc.dart';
 import 'package:flutter_retrofit_texnomart/utils/widget/widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../data/sourse/remote/respons/type_product/type_product_response.dart';
 import '../../../utils/status.dart';
 import '../../blocs/home/home_page_bloc.dart';
 import '../../screen/all_product/by_category_all_product.dart';
@@ -39,8 +40,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: BlocConsumer<HomePageBloc, HomePageState>(
-          listener: (context, state) {
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             if (state.status == Status.loading) {
               return getLoading();
@@ -60,8 +60,10 @@ class _HomePageState extends State<HomePage> {
                             child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("texnomart", style: TextStyle(fontSize: 24, color: Colors.black,fontWeight: FontWeight.bold)),
-                                Align(alignment: Alignment.topLeft, child: Text("*", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24, color: Colors.black))),
+                                Text("texnomart", style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold)),
+                                Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text("*", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black))),
                               ],
                             ),
                           ),
@@ -146,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.symmetric(horizontal: 12.0),
                             child: Row(
                               children: [
-                                const Text("Ommabop kategoriyalar", style: TextStyle(fontSize: 20, color: Colors.black,fontWeight: FontWeight.bold)),
+                                const Text("Ommabop kategoriyalar", style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
                                 const Spacer(),
                                 GestureDetector(
                                   onTap: () {
@@ -185,7 +187,9 @@ class _HomePageState extends State<HomePage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => BlocProvider(
-                                                      create: (context) => AllProductBloc()..add(AllProductEvent(category: item.slug ?? "", chipsIndex: -1))..add(LoadChipsList(category: item.slug ?? "")),
+                                                      create: (context) => AllProductBloc()
+                                                        ..add(AllProductEvent(category: item.slug ?? "", chipsIndex: -1))
+                                                        ..add(LoadChipsList(category: item.slug ?? "")),
                                                       child: ByCategoryAllProduct(
                                                         categoryName: item.title ?? "",
                                                       ),
@@ -227,63 +231,50 @@ class _HomePageState extends State<HomePage> {
                     SliverToBoxAdapter(
                       child: Column(
                         children: [
-                          const SizedBox(height: 16),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 12.0),
-                            child: Row(
-                              children: [
-                                Text("Tavsiya etilgan mahsulotlar", style: TextStyle(fontSize: 20, color: Colors.black,fontWeight: FontWeight.bold)),
-                                Spacer(),
-                                Text("hammasi", style: TextStyle(fontSize: 16, color: Colors.black54)),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Colors.black54,
-                                  size: 16,
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          SizedBox(
-                            height: 350,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                              child: ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: state.productData?.length ?? 0,
-                                itemBuilder: (context, index) {
-                                  var item = state.productData?[index];
-                                  if (item == null) {
-                                    return const SizedBox.shrink(); // Yoki boshqa bir default vidjet qaytaring
-                                  }
-                                  return itemProduct(
-                                      item,
-                                      () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => DetailScreen(
-                                                      id: "${item.id ?? 100}",
-                                                    )));
-                                      },
-                                      MyHiveHelper.isHasFavorite("${item.id}"),
-                                      () {
-                                        if (MyHiveHelper.isHasFavorite("${item.id}")) {
-                                          MyHiveHelper.removeFavorite("${item.id}");
-                                          context.read<HomePageBloc>().add(GetFavoriteEvent());
-                                        } else {
-                                          MyHiveHelper.addFavorite(
-                                              FavoriteModel("${item.id}", true, item.name ?? "", item.image ?? "", "${item.salePrice}"));
-                                          context.read<HomePageBloc>().add(GetFavoriteEvent());
-                                        }
-                                      });
-                                },
-                                separatorBuilder: (BuildContext context, int index) {
-                                  return const SizedBox(width: 4);
-                                },
-                              ),
-                            ),
-                          ),
+                          if ((state.newProductData ?? []).isNotEmpty)
+                            _categoryItem(categoryName: "Tavsiya etilgan mahsulotlar", productDataList: state.newProductData!, clickAll: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BlocProvider(
+                                        create: (context) => AllProductBloc()
+                                          ..add(AllProductEvent(category: "", chipsIndex: -1))
+                                          ..add(LoadChipsList(category: "")),
+                                        child: const ByCategoryAllProduct(
+                                          categoryName: "Tavsiya etilgan mahsulotlar",
+                                        ),
+                                      )));
+                            }),
+                          if ((state.xitProductData ?? []).isNotEmpty)
+                            _categoryItem(categoryName: "Xit savdo", productDataList: state.xitProductData!, clickAll: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BlocProvider(
+                                        create: (context) => AllProductBloc()
+                                          ..add(AllProductEvent(category: "hity-prodazh", chipsIndex: -1))
+                                          ..add(LoadChipsList(category: "hity-prodazh")),
+                                        child: const ByCategoryAllProduct(
+                                          categoryName: "Xit savdo",
+                                        ),
+                                      )));
+
+                            }),
+                          if ((state.climateProductData ?? []).isNotEmpty)
+                            _categoryItem(categoryName: "Tanlovlar", productDataList: state.climateProductData!, clickAll: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BlocProvider(
+                                        create: (context) => AllProductBloc()
+                                          ..add(AllProductEvent(category: "", chipsIndex: -1))
+                                          ..add(LoadChipsList(category: "")),
+                                        child: const ByCategoryAllProduct(
+                                          categoryName: "Tanlovlar",
+                                        ),
+                                      )));
+
+                            }),
                         ],
                       ),
                     )
@@ -296,6 +287,68 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
+    );
+  }
+
+  Widget _categoryItem({required String categoryName, required List<ProductData> productDataList,required VoidCallback clickAll}) {
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Row(
+            children: [
+              Text(categoryName, style: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
+              const Spacer(),
+              GestureDetector(
+                  onTap: clickAll,
+                  child: const Text("hammasi", style: TextStyle(fontSize: 16, color: Colors.black54))),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black54,
+                size: 16,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 350,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: productDataList.length ?? 0,
+              itemBuilder: (context, index) {
+                var item = productDataList[index];
+                return itemProduct(
+                    item,
+                    () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailScreen(
+                                    id: "${item.id ?? 100}",
+                                  )));
+                    },
+                    MyHiveHelper.isHasFavorite("${item.id}"),
+                    () {
+                      if (MyHiveHelper.isHasFavorite("${item.id}")) {
+                        MyHiveHelper.removeFavorite("${item.id}");
+                        context.read<HomePageBloc>().add(GetFavoriteEvent());
+                      } else {
+                        MyHiveHelper.addFavorite(FavoriteModel("${item.id}", true, item.name ?? "", item.image ?? "", "${item.salePrice}"));
+                        context.read<HomePageBloc>().add(GetFavoriteEvent());
+                      }
+                    });
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(width: 4);
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

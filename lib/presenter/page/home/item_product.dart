@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/new_product/new_product_response.dart';
 import 'package:flutter_retrofit_texnomart/utils/nuber_format.dart';
+
+import '../../../data/sourse/remote/respons/type_product/type_product_response.dart';
 
 Widget itemProduct(ProductData? data, VoidCallback clickItem, bool isFavorite,
     VoidCallback clickFavorite) {

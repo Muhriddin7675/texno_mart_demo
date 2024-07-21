@@ -135,9 +135,10 @@ Map<String, dynamic> _$$CatalogImplToJson(_$CatalogImpl instance) =>
 _$MinimalLoanPriceImpl _$$MinimalLoanPriceImplFromJson(
         Map<String, dynamic> json) =>
     _$MinimalLoanPriceImpl(
-      (json['min_monthly_price'] as num?)?.toInt(),
+      json['min_monthly_price'] as String?,
       (json['month_number'] as num?)?.toInt(),
       json['min_loan_type'] as String?,
+      json['description'] as String?,
     );
 
 Map<String, dynamic> _$$MinimalLoanPriceImplToJson(
@@ -146,6 +147,7 @@ Map<String, dynamic> _$$MinimalLoanPriceImplToJson(
       'min_monthly_price': instance.minMonthlyPrice,
       'month_number': instance.monthNumber,
       'min_loan_type': instance.minLoanType,
+      'description': instance.description,
     };
 
 _$SaleMonthsImpl _$$SaleMonthsImplFromJson(Map<String, dynamic> json) =>

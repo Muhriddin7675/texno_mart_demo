@@ -73,20 +73,20 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<NewProductResponse> getNewProducts() async {
+  Future<TypeProductResponse> getByTypeProducts({required String type}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'type': type};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<NewProductResponse>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<TypeProductResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'web/v1/home/special-products?type=new_products',
+              'web/v1/home/special-products',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -95,7 +95,34 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = NewProductResponse.fromJson(_result.data!);
+    final value = TypeProductResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<LocationResponse> getLocationList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<LocationResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'web/v1/region/stores-list',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = LocationResponse.fromJson(_result.data!);
     return value;
   }
 

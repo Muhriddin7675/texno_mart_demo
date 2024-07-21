@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/catalog/catalog_menu.dart';
-import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/new_product/new_product_response.dart';
+import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/map/location_response.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/slider/slider_response.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -8,6 +8,7 @@ import '../respons/chips/chips_response.dart';
 import '../respons/product_all_category/product_all_category.dart';
 import '../respons/product_detail/product_detail_response.dart';
 import '../respons/spesical_categories/special_categories.dart';
+import '../respons/type_product/type_product_response.dart';
 
 part 'api_service.g.dart';
 
@@ -21,8 +22,11 @@ abstract class ApiService {
   @GET('web/v1/home/special-categories')
   Future<SpecialCategories> getSpecialCategories();
 
-  @GET('web/v1/home/special-products?type=new_products')
-  Future<NewProductResponse> getNewProducts();
+  @GET('web/v1/home/special-products')
+  Future<TypeProductResponse> getByTypeProducts({@Query("type") required String type});
+
+  @GET('web/v1/region/stores-list')
+  Future<LocationResponse> getLocationList();
 
   @GET('web/v1/product/detail')
   Future<ProductDetailResponse> getProductDetail({

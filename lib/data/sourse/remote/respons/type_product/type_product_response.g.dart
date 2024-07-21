@@ -1,32 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'new_product_response.dart';
+part of 'type_product_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NewProductResponse _$$NewProductResponseFromJson(Map<String, dynamic> json) =>
-    NewProductResponse(
-      json['success'] as bool?,
-      json['message'] as String?,
-      (json['code'] as num?)?.toInt(),
-      json['data'] == null
-          ? null
-          : GetAllProductData.fromJson(json['data'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$NewProductResponseToJson(NewProductResponse instance) =>
-    <String, dynamic>{
-      'success': instance.success,
-      'message': instance.message,
-      'code': instance.code,
-      'data': instance.data?.toJson(),
-    };
-
-_$NewProductResponseImpl _$$NewProductResponseImplFromJson(
+_$TypeProductResponseImpl _$$TypeProductResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$NewProductResponseImpl(
+    _$TypeProductResponseImpl(
       json['success'] as bool?,
       json['message'] as String?,
       (json['code'] as num?)?.toInt(),
@@ -35,13 +17,13 @@ _$NewProductResponseImpl _$$NewProductResponseImplFromJson(
           : GetAllProductData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$NewProductResponseImplToJson(
-        _$NewProductResponseImpl instance) =>
+Map<String, dynamic> _$$TypeProductResponseImplToJson(
+        _$TypeProductResponseImpl instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,
       'code': instance.code,
-      'data': instance.data?.toJson(),
+      'data': instance.data,
     };
 
 _$GetAllProductDataImpl _$$GetAllProductDataImplFromJson(
@@ -70,7 +52,7 @@ _$ProductDataImpl _$$ProductDataImplFromJson(Map<String, dynamic> json) =>
       (json['finish_price'] as num?)?.toInt(),
       (json['discount_price'] as num?)?.toInt(),
       (json['reviews_count'] as num?)?.toInt(),
-      json['reviews_average'] as String?,
+      (json['reviews_average'] as num?)?.toInt(),
       (json['all_count'] as num?)?.toInt(),
     );
 

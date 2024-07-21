@@ -58,6 +58,8 @@ class ProductAllData with _$ProductAllData {
    List<AvailableStores>? availableStores,
    List<Accessories>? accessories,
    int? promotion0012Price,
+
+
   ) = _ProductData;
 
   factory ProductData.fromJson(Map<String, dynamic> json) =>
@@ -83,9 +85,10 @@ class MinimalLoanPrice with _$MinimalLoanPrice {
    @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 
   const factory MinimalLoanPrice(
-    int? minMonthlyPrice,
-    int? monthNumber,
-    String? minLoanType,
+   String? minMonthlyPrice,
+   int? monthNumber,
+   String? minLoanType,
+   String? description,
   ) = _MinimalLoanPrice;
 
   factory MinimalLoanPrice.fromJson(Map<String, dynamic> json) =>

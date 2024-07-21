@@ -736,7 +736,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     );
                                   } else {
                                     return _inactivContainer(
-                                      monthly: (data.salePrice ?? 0) ~/ 12,
+                                      monthly: (data.salePrice ?? 0) ~/ 6,
                                       image: _moonSixImageList[i],
                                       clickItem: () {
                                         activeItemIndex = i;

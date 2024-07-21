@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'new_product_response.dart';
+part of 'type_product_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-NewProductResponse _$NewProductResponseFromJson(Map<String, dynamic> json) {
-  return _NewProductResponse.fromJson(json);
+TypeProductResponse _$TypeProductResponseFromJson(Map<String, dynamic> json) {
+  return _TypeProductResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NewProductResponse {
+mixin _$TypeProductResponse {
   bool? get success => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   int? get code => throw _privateConstructorUsedError;
@@ -27,15 +27,15 @@ mixin _$NewProductResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NewProductResponseCopyWith<NewProductResponse> get copyWith =>
+  $TypeProductResponseCopyWith<TypeProductResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NewProductResponseCopyWith<$Res> {
-  factory $NewProductResponseCopyWith(
-          NewProductResponse value, $Res Function(NewProductResponse) then) =
-      _$NewProductResponseCopyWithImpl<$Res, NewProductResponse>;
+abstract class $TypeProductResponseCopyWith<$Res> {
+  factory $TypeProductResponseCopyWith(
+          TypeProductResponse value, $Res Function(TypeProductResponse) then) =
+      _$TypeProductResponseCopyWithImpl<$Res, TypeProductResponse>;
   @useResult
   $Res call(
       {bool? success, String? message, int? code, GetAllProductData? data});
@@ -44,9 +44,9 @@ abstract class $NewProductResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewProductResponseCopyWithImpl<$Res, $Val extends NewProductResponse>
-    implements $NewProductResponseCopyWith<$Res> {
-  _$NewProductResponseCopyWithImpl(this._value, this._then);
+class _$TypeProductResponseCopyWithImpl<$Res, $Val extends TypeProductResponse>
+    implements $TypeProductResponseCopyWith<$Res> {
+  _$TypeProductResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,11 +95,11 @@ class _$NewProductResponseCopyWithImpl<$Res, $Val extends NewProductResponse>
 }
 
 /// @nodoc
-abstract class _$$NewProductResponseImplCopyWith<$Res>
-    implements $NewProductResponseCopyWith<$Res> {
-  factory _$$NewProductResponseImplCopyWith(_$NewProductResponseImpl value,
-          $Res Function(_$NewProductResponseImpl) then) =
-      __$$NewProductResponseImplCopyWithImpl<$Res>;
+abstract class _$$TypeProductResponseImplCopyWith<$Res>
+    implements $TypeProductResponseCopyWith<$Res> {
+  factory _$$TypeProductResponseImplCopyWith(_$TypeProductResponseImpl value,
+          $Res Function(_$TypeProductResponseImpl) then) =
+      __$$TypeProductResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$NewProductResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$NewProductResponseImplCopyWithImpl<$Res>
-    extends _$NewProductResponseCopyWithImpl<$Res, _$NewProductResponseImpl>
-    implements _$$NewProductResponseImplCopyWith<$Res> {
-  __$$NewProductResponseImplCopyWithImpl(_$NewProductResponseImpl _value,
-      $Res Function(_$NewProductResponseImpl) _then)
+class __$$TypeProductResponseImplCopyWithImpl<$Res>
+    extends _$TypeProductResponseCopyWithImpl<$Res, _$TypeProductResponseImpl>
+    implements _$$TypeProductResponseImplCopyWith<$Res> {
+  __$$TypeProductResponseImplCopyWithImpl(_$TypeProductResponseImpl _value,
+      $Res Function(_$TypeProductResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$NewProductResponseImplCopyWithImpl<$Res>
     Object? code = freezed,
     Object? data = freezed,
   }) {
-    return _then(_$NewProductResponseImpl(
+    return _then(_$TypeProductResponseImpl(
       freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -147,14 +147,13 @@ class __$$NewProductResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class _$NewProductResponseImpl implements _NewProductResponse {
-  const _$NewProductResponseImpl(
+@JsonSerializable()
+class _$TypeProductResponseImpl implements _TypeProductResponse {
+  const _$TypeProductResponseImpl(
       this.success, this.message, this.code, this.data);
 
-  factory _$NewProductResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NewProductResponseImplFromJson(json);
+  factory _$TypeProductResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TypeProductResponseImplFromJson(json);
 
   @override
   final bool? success;
@@ -167,14 +166,14 @@ class _$NewProductResponseImpl implements _NewProductResponse {
 
   @override
   String toString() {
-    return 'NewProductResponse(success: $success, message: $message, code: $code, data: $data)';
+    return 'TypeProductResponse(success: $success, message: $message, code: $code, data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NewProductResponseImpl &&
+            other is _$TypeProductResponseImpl &&
             (identical(other.success, success) || other.success == success) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code) &&
@@ -188,27 +187,27 @@ class _$NewProductResponseImpl implements _NewProductResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NewProductResponseImplCopyWith<_$NewProductResponseImpl> get copyWith =>
-      __$$NewProductResponseImplCopyWithImpl<_$NewProductResponseImpl>(
+  _$$TypeProductResponseImplCopyWith<_$TypeProductResponseImpl> get copyWith =>
+      __$$TypeProductResponseImplCopyWithImpl<_$TypeProductResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NewProductResponseImplToJson(
+    return _$$TypeProductResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _NewProductResponse implements NewProductResponse {
-  const factory _NewProductResponse(
+abstract class _TypeProductResponse implements TypeProductResponse {
+  const factory _TypeProductResponse(
       final bool? success,
       final String? message,
       final int? code,
-      final GetAllProductData? data) = _$NewProductResponseImpl;
+      final GetAllProductData? data) = _$TypeProductResponseImpl;
 
-  factory _NewProductResponse.fromJson(Map<String, dynamic> json) =
-      _$NewProductResponseImpl.fromJson;
+  factory _TypeProductResponse.fromJson(Map<String, dynamic> json) =
+      _$TypeProductResponseImpl.fromJson;
 
   @override
   bool? get success;
@@ -220,7 +219,7 @@ abstract class _NewProductResponse implements NewProductResponse {
   GetAllProductData? get data;
   @override
   @JsonKey(ignore: true)
-  _$$NewProductResponseImplCopyWith<_$NewProductResponseImpl> get copyWith =>
+  _$$TypeProductResponseImplCopyWith<_$TypeProductResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -387,7 +386,7 @@ mixin _$ProductData {
   int? get finishPrice => throw _privateConstructorUsedError;
   int? get discountPrice => throw _privateConstructorUsedError;
   int? get reviewsCount => throw _privateConstructorUsedError;
-  String? get reviewsAverage => throw _privateConstructorUsedError;
+  int? get reviewsAverage => throw _privateConstructorUsedError;
   int? get allCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -413,7 +412,7 @@ abstract class $ProductDataCopyWith<$Res> {
       int? finishPrice,
       int? discountPrice,
       int? reviewsCount,
-      String? reviewsAverage,
+      int? reviewsAverage,
       int? allCount});
 }
 
@@ -487,7 +486,7 @@ class _$ProductDataCopyWithImpl<$Res, $Val extends ProductData>
       reviewsAverage: freezed == reviewsAverage
           ? _value.reviewsAverage
           : reviewsAverage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       allCount: freezed == allCount
           ? _value.allCount
           : allCount // ignore: cast_nullable_to_non_nullable
@@ -515,7 +514,7 @@ abstract class _$$ProductDataImplCopyWith<$Res>
       int? finishPrice,
       int? discountPrice,
       int? reviewsCount,
-      String? reviewsAverage,
+      int? reviewsAverage,
       int? allCount});
 }
 
@@ -587,7 +586,7 @@ class __$$ProductDataImplCopyWithImpl<$Res>
       freezed == reviewsAverage
           ? _value.reviewsAverage
           : reviewsAverage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       freezed == allCount
           ? _value.allCount
           : allCount // ignore: cast_nullable_to_non_nullable
@@ -638,7 +637,7 @@ class _$ProductDataImpl implements _ProductData {
   @override
   final int? reviewsCount;
   @override
-  final String? reviewsAverage;
+  final int? reviewsAverage;
   @override
   final int? allCount;
 
@@ -718,7 +717,7 @@ abstract class _ProductData implements ProductData {
       final int? finishPrice,
       final int? discountPrice,
       final int? reviewsCount,
-      final String? reviewsAverage,
+      final int? reviewsAverage,
       final int? allCount) = _$ProductDataImpl;
 
   factory _ProductData.fromJson(Map<String, dynamic> json) =
@@ -745,7 +744,7 @@ abstract class _ProductData implements ProductData {
   @override
   int? get reviewsCount;
   @override
-  String? get reviewsAverage;
+  int? get reviewsAverage;
   @override
   int? get allCount;
   @override

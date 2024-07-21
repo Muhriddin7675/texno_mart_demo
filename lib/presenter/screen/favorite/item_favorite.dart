@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_retrofit_texnomart/data/model/favorite/favorite_model.dart';
-import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/new_product/new_product_response.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/product_all_category/product_all_category.dart';
-import 'package:flutter_retrofit_texnomart/utils/nuber_format.dart';
+
+import '../../../utils/nuber_format.dart';
 
 Widget itemFavorite(FavoriteModel data,VoidCallback clickItem,bool isFavorite,VoidCallback clickFavorite,bool isBasket ,VoidCallback clickBasket) {
   return GestureDetector(

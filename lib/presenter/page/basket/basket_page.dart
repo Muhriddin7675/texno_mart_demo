@@ -432,6 +432,7 @@ class _BasketPageState extends State<BasketPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    if(state.allProductCount != 0)
                                     Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
@@ -455,6 +456,9 @@ class _BasketPageState extends State<BasketPage> {
                                         ),
                                       ),
                                     ),
+                                    if(state.allProductCount == 0)
+                                      getLoading(),
+
                                     const SizedBox(
                                       height: 18,
                                     ),

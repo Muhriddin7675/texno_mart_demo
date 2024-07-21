@@ -62,7 +62,8 @@ class CatalogPage extends StatelessWidget {
                                                   child: ByCategoryAllProduct(
                                                     categoryName: catalogList?[index].name ?? "",
                                                   ),
-                                                )));
+                                                ))
+                                    );
                                   },
 
                                   child: Row(

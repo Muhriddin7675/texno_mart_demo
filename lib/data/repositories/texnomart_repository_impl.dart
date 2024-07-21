@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/catalog/catalog_menu.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/chips/chips_response.dart';
-import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/new_product/new_product_response.dart';
+import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/map/location_response.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/product_all_category/product_all_category.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/product_detail/product_detail_response.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/slider/slider_response.dart';
 import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/spesical_categories/special_categories.dart';
+import 'package:flutter_retrofit_texnomart/data/sourse/remote/respons/type_product/type_product_response.dart';
 
 import '../../di/di.dart';
 import '../../domain/texnomart_repository.dart';
@@ -35,16 +36,6 @@ class TexnomartRepositoryImpl extends TexnomartRepository {
   }
 
   @override
-  Future<NewProductResponse> getNewProductResponse() async {
-    try {
-      final response = await apiService.getNewProducts();
-      return response;
-    } on DioException {
-      rethrow;
-    }
-  }
-
-  @override
   Future<ProductDetailResponse> getByIdProductData(String id) async {
     try {
       final response = await apiService.getProductDetail(id: id);
@@ -55,11 +46,9 @@ class TexnomartRepositoryImpl extends TexnomartRepository {
   }
 
   @override
-  Future<ProductAllCategory> getAllByCategory(
-      String category, String? sort, String? number) async {
+  Future<ProductAllCategory> getAllByCategory(String category, String? sort, String? number) async {
     try {
-      final response = await apiService.getCategoryProductSimple(
-          category: category, sort: sort, number: number);
+      final response = await apiService.getCategoryProductSimple(category: category, sort: sort, number: number);
       return response;
     } on DioException {
       rethrow;
@@ -78,11 +67,31 @@ class TexnomartRepositoryImpl extends TexnomartRepository {
 
   @override
   Future<ChipsResponse> getChips(String category) async {
-     try{
-       final response  = await apiService.getChips(category: category);
-       return response;
-     }on DioException{
-       rethrow;
-     }
+    try {
+      final response = await apiService.getChips(category: category);
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<LocationResponse> getLocationList() async {
+    try {
+      final response = await apiService.getLocationList();
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<TypeProductResponse> getByTypeProductResponse(String type) async {
+    try {
+      final response = await apiService.getByTypeProducts(type: type);
+      return response;
+    } on DioException {
+      rethrow;
+    }
   }
 }
